@@ -1,4 +1,5 @@
 import React from 'react'
+import Title from './Title.jsx'
 
 // REMEMBER: React Component props can store/render React components, but
 // not non-string JSON or JS Object data
