@@ -34,6 +34,11 @@ function startExpressRoutes(){
     retrieveLink(req.query, res)
   })
 
+  app.delete('/links', (req,res)=>{
+    if(req.query.id !== undefined)
+      deleteLink(req.query, res)
+  })
+
   app.listen(3000, ()=>'server online')
 
 }
@@ -70,8 +75,12 @@ function insertIntoCollection(query){
   console.log('inserting link into collection...')
   return new Promise((resolve, reject)=>{
     collection.insertOne({ id: query.id, link: query.link }, (err,response)=>{
-      if(!err){ console.log('inserted new link success!'); resolve(response); }
-      else{ reject(err) }
+      if(!err){
+        console.log('inserted new link success!')
+        resolve(response)
+      }else{
+        reject(err)
+      }
     })
   })
 }
@@ -89,6 +98,30 @@ function retrieveDocumentsFromCollection(){
       }
     })
   })
+}
+
+function deleteLinkFromCollection(query){
+  console.log('deleting document..')
+  return new Promise((resolve, reject)=>{
+    collection.deleteMany({id:query.id}, (err, response)=>{
+      if(!err){
+        console.log('successfully deleted a link from mongo')
+        resolve(response)
+      }else{
+        reject(err)
+      }
+    })
+
+  })
+}
+
+async function deleteLink(query, res){
+  try{
+    const result = await deleteLinkFromCollection(query)
+    res.send(result)
+  }catch(err){
+    console.log(err)
+  }
 }
 
 async function retrieveLink(query, res){
