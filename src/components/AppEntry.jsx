@@ -1,5 +1,8 @@
 import React from 'react'
 import Title from './Title.jsx'
+import Link from './Link.jsx'
+import Input from './Input.jsx'
+import uuid from 'uuid'
 
 // REMEMBER: React Component props can store/render React components, but
 // not non-string JSON or JS Object data
@@ -7,24 +10,26 @@ import Title from './Title.jsx'
 export default class AppEntry extends React.Component {
   constructor(props){
     super(props)
+    // this.onClicker = this.onClicker.bind(this)
   }
   componentDidMount(){
     this.props.retrieveLinks()
   }
   componentDidUpdate(){
-    // console.log('AppEntry did update')
+    console.log('AppEntry did update')
   }
-  /*
-  Remember, "this.props.." are mapped to Redux dispatch,
-  this.state is not set here, only this.props
-  State is handled at the top level by Redux, and trickles
-  down from there
-  */
+  /*addLink(id){
+    this.props.addLink(id)
+  }*/
   render(){
+    let dummy = this.props.links.slice(0)
+    // need to fix this to make .onClicker() have the proper parameters
     return(
       <div>
-        <Title title="Links"/>
-        
+        <Title title={this.props.title}/>
+        <Input addLink={this.props.addLink}/>
+        {/* Links here */}
+        <div>{dummy.map((link,i)=><div key={uuid()}><Link link={link}/></div>)}</div>
       </div>
     )
   }

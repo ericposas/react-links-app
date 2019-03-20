@@ -1,18 +1,51 @@
 import {connect} from 'react-redux'
 import AppEntry from './AppEntry.jsx'
 import React from 'react'
+import request from 'superagent'
 
 function mapStateToProps(state){
-  // map our Redux state to the React Component 'AppEntry'
-  return{
+  // keep state flattened
+  return {
+    ...state
+  }
+}
 
+async function retrieveLinks(dispatch){
+  try{
+    const result = await request.get('http://localhost:3000/links')
+    const parsed = JSON.parse(result.text)
+    let retrieved = parsed.slice(0).map(obj=>obj.link)
+    dispatch({ type:'linksretrieved', links:retrieved })
+  }catch(err){
+    console.log(err)
   }
 }
 
 function mapDispatchToProps(dispatch){
   // map our dispatch() calls so that our app UI is in sync with the Redux store
   return {
-
+    retrieveLinks: async ()=>{
+      dispatch({ type:'retrievelinks' })
+      try{
+        await retrieveLinks(dispatch)
+      }catch(err){
+        console.log(err)
+      }
+    },
+    addLink: async (link)=>{
+      // addLink must also retrieve links once it successfully adds a new one
+      dispatch({ type:'addinglink' })
+      try{
+        const result = await request.post(`http://localhost:3000/links?link=${link}`)
+        const parsed = JSON.parse(result.text)
+        if(parsed.n > 0){
+          dispatch({ type:'linkadded' })
+          await retrieveLinks(dispatch)
+        }
+      }catch(err){
+        console.log(err)
+      }
+    }
   }
 }
 

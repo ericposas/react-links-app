@@ -18,8 +18,9 @@ const store = createStore(Reducer)
 store.subscribe(()=>{
   // a function call that you want to run every time
   // the app state has been updated
-  console.log(store.getState())
 
+  // console.log(store.getState())
+  
 })
 
 // Render

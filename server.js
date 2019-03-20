@@ -26,7 +26,7 @@ function startExpressRoutes(){
   app.use(express.static(`${__dirname}/dist`))
 
   app.post('/links', (req,res)=>{
-    if(req.query.link !== undefined && req.query.id !== undefined)
+    if(req.query.link !== undefined)
       insertLink(req.query, res)
   })
 
@@ -74,7 +74,7 @@ function selectCollection(){
 function insertIntoCollection(query){
   console.log('inserting link into collection...')
   return new Promise((resolve, reject)=>{
-    collection.insertOne({ id: query.id, link: query.link }, (err,response)=>{
+    collection.insertOne({ link: query.link }, (err,response)=>{
       if(!err){
         console.log('inserted new link success!')
         resolve(response)
@@ -103,7 +103,7 @@ function retrieveDocumentsFromCollection(){
 function deleteLinkFromCollection(query){
   console.log('deleting document..')
   return new Promise((resolve, reject)=>{
-    collection.deleteMany({id:query.id}, (err, response)=>{
+    collection.deleteMany({ _id:`ObjectId(${query.id})` }, (err, response)=>{
       if(!err){
         console.log('successfully deleted a link from mongo')
         resolve(response)
@@ -127,15 +127,12 @@ async function deleteLink(query, res){
 async function retrieveLink(query, res){
   try{
     const stream = await retrieveDocumentsFromCollection()
-    // res.write('{ "links": [ ')
-    let json = {
-      links: []
-    }
+    let links = []
     stream.on('data', docs=>{
-      json.links.push( docs )
+      links.push( docs )
     })
     stream.on('end', ()=>{
-      res.write(JSON.stringify(json))
+      res.write(JSON.stringify(links))
       res.end()
     })
   }catch(err){
@@ -146,7 +143,7 @@ async function retrieveLink(query, res){
 async function insertLink(query, res){
   try{
     const response = await insertIntoCollection(query)
-    res.send(response)
+    res.send(JSON.stringify(response))
   }catch(err){
     console.log(err)
   }
