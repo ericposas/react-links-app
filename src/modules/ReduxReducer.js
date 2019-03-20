@@ -1,5 +1,4 @@
 import React from 'react'
-import request from 'superagent'
 
 // Reducer function returns Redux state data
 export default function Reducer(state, action){
