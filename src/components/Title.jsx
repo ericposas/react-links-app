@@ -1,13 +1,11 @@
 import React from 'react'
 
 export default class Title extends React.Component {
+
   constructor(props){
     super(props)
-    this.onClicker = this.onClicker.bind(this)
   }
-  onClicker(){
-    this.props.addLink('thing')
-  }
+
   render(){
     let style = {}
     style.title = {
@@ -18,8 +16,9 @@ export default class Title extends React.Component {
     return(
       <div>
         <br></br>
-        <div onClick={this.onClicker} style={style.title}>{this.props.title}</div>
+        <div style={style.title}>{this.props.title}</div>
       </div>
     )
   }
+  
 }

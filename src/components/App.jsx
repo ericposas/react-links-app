@@ -14,8 +14,9 @@ async function retrieveLinks(dispatch){
   try{
     const result = await request.get('http://localhost:3000/links')
     const parsed = JSON.parse(result.text)
+    let db_ids = parsed.slice(0).map(obj=>obj._id)
     let retrieved = parsed.slice(0).map(obj=>obj.link)
-    dispatch({ type:'linksretrieved', links:retrieved })
+    dispatch({ type:'linksretrieved', ids:db_ids, links:retrieved })
   }catch(err){
     console.log(err)
   }
@@ -45,14 +46,23 @@ function mapDispatchToProps(dispatch){
       }catch(err){
         console.log(err)
       }
+    },
+    deleteLink: async (id)=>{
+      // deleteLink must retrieve values from db after the deletion
+      dispatch({ type:'deletinglink' })
+      try{
+        const result = await request.delete(`http://localhost:3000/links?id=${id}`)
+        dispatch({ type:'linkdeleted' })
+        await retrieveLinks(dispatch)
+      }catch(err){
+        console.log(err)
+      }
     }
   }
 }
 
 // connect our React component and export the connected component for use
-const connectedComponent = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(AppEntry)
-
-export default connectedComponent

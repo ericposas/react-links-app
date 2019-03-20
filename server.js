@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const mongodb = require('mongodb').MongoClient;
+const ObjectId = require('mongodb').ObjectId;
 // database credentials
 let db = null;
 let collection = null;
@@ -103,7 +104,7 @@ function retrieveDocumentsFromCollection(){
 function deleteLinkFromCollection(query){
   console.log('deleting document..')
   return new Promise((resolve, reject)=>{
-    collection.deleteMany({ _id:`ObjectId(${query.id})` }, (err, response)=>{
+    collection.deleteOne({_id:ObjectId(query.id)}, (err, response)=>{
       if(!err){
         console.log('successfully deleted a link from mongo')
         resolve(response)

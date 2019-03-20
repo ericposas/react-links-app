@@ -5,18 +5,20 @@ import request from 'superagent'
 export default function Reducer(state, action){
   if(state === undefined){
     return {
-      title: 'Default Title',
-      links: []
+      title: 'Links',
+      links: [],
+      ids: []
     }
   }
 
   switch(action.type){
-    // link retrieval method is what keeps mongo and redux state in-sync 
+    // link retrieval method is what keeps mongo and redux state in-sync
     case 'linksretrieved':
       console.log(`links retrieved from mongodb: ${action.links}`)
       return {
         ...state,
-        links: action.links
+        links: action.links,
+        ids: action.ids
       }
     case 'retrievelinks':
       console.log(`attempting to retrieve stored links.`)
@@ -30,6 +32,16 @@ export default function Reducer(state, action){
       }
     case 'linkadded':
       console.log(`link added to mongodb!`)
+      return {
+        ...state
+      }
+    case 'deletinglink':
+      console.log(`deleting a link from mongodb..`)
+      return {
+        ...state
+      }
+    case 'linkdeleted':
+      console.log(`link deleted!`)
       return {
         ...state
       }

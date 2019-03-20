@@ -23,13 +23,14 @@ export default class AppEntry extends React.Component {
   }*/
   render(){
     let dummy = this.props.links.slice(0)
+    let ids = this.props.ids.slice(0)
     // need to fix this to make .onClicker() have the proper parameters
     return(
       <div>
         <Title title={this.props.title}/>
         <Input addLink={this.props.addLink}/>
         {/* Links here */}
-        <div>{dummy.map((link,i)=><div key={uuid()}><Link link={link}/></div>)}</div>
+        <div>{dummy.map((link,i)=><div key={uuid()}><Link id={ids[i]} deleteLink={this.props.deleteLink} link={link}/></div>)}</div>
       </div>
     )
   }
