@@ -40,7 +40,7 @@ function startExpressRoutes(){
       deleteLink(req.query, res)
   })
 
-  app.listen(3000, ()=>'server online')
+  app.listen(8080, ()=>'server online')
 
 }
 
