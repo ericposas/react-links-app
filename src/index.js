@@ -15,13 +15,7 @@ document.getElementsByTagName('title')[0].innerHTML = title
 
 // Redux Store
 const store = createStore(Reducer)
-store.subscribe(()=>{
-  // a function call that you want to run every time
-  // the app state has been updated
-
-  // console.log(store.getState())
-  
-})
+// store.subscribe()  <--can be called at every store update
 
 // Render
 ReactDOM.render(
