@@ -29,8 +29,8 @@ module.exports = {
   },
   plugins: [
     new html_plugin({
-      filename: './index.html'
-      // template: './src/index.html'
+      filename: './index.html',
+      template: './src/index.html'
     })
   ]
 }

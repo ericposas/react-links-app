@@ -3,9 +3,11 @@
 
 html,
 body{
-  font-family: 'Baloo Chettan';
+  width: 100%;
   margin: none;
+  font-family: 'Baloo Chettan';
   background-color: #74a9fb;
+  overflow-x: hidden;
 }
 
 .title{
@@ -22,10 +24,10 @@ body{
   transform: scale(1.1);
 }
 
-.link{
+/*.link{
   transition: transform .35s
 }
 
 .link:hover{
   transform: scale(1.05)
-}
+}*/

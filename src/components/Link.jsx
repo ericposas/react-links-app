@@ -11,7 +11,7 @@ export default class Link extends React.Component {
         width: '100%'
       },
       div:{
-        width: '95%',
+        width: '93%',
         backgroundColor: '#9cc2fc',
         textAlign: 'center',
         display: 'inline-block',
@@ -24,7 +24,7 @@ export default class Link extends React.Component {
     return(
       <div className="link" style={style.div}>
         <X id={this.props.id} deleteLink={this.props.deleteLink}/>
-        <a style={style.a} href={this.props.link}><div>{this.props.link}</div></a>
+        <a style={style.a} href={this.props.link} target="_blank"><div>{this.props.link}</div></a>
       </div>
     )
   }
