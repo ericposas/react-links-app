@@ -2,7 +2,5 @@
 # Links
 ## A simple app that allows you to avoid emailing yourself links
 
-
-# TODO
-- Style app
-- Auto-clear out the text field after submission
+- MongoDB backend to store persistent link data across devices
+- React/Redux front-end 

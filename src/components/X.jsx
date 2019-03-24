@@ -14,8 +14,14 @@ export default class X extends React.Component {
   render(){
     let style = {
       x:{
+        fontSize: '20px',
+        fontWeight: 'bold',
         cursor: 'pointer',
-        display: 'inline-block'
+        display: 'inline-block',
+        marginTop: '-5px',
+        paddingRight: '20px',
+        float: 'left',
+        color: 'darkorange'
       }
     }
     return(

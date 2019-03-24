@@ -1,0 +1,31 @@
+// @import url('https://fonts.googleapis.com/css?family=Ubuntu');
+@import url('https://fonts.googleapis.com/css?family=Baloo+Chettan');
+
+html,
+body{
+  font-family: 'Baloo Chettan';
+  margin: none;
+  background-color: #74a9fb;
+}
+
+.title{
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: orange;
+}
+
+.submit-button{
+  transition: transform .35s
+}
+
+.submit-button:hover{
+  transform: scale(1.1);
+}
+
+.link{
+  transition: transform .35s
+}
+
+.link:hover{
+  transform: scale(1.05)
+}
