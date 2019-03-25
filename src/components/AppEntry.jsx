@@ -10,10 +10,10 @@ import uuid from 'uuid'
 export default class AppEntry extends React.Component {
   constructor(props){
     super(props)
-    // this.onClicker = this.onClicker.bind(this)
   }
   componentDidMount(){
-    this.props.retrieveLinks()
+    const {retrieveLinks} = this.props
+    retrieveLinks()
   }
   componentDidUpdate(){
     console.log('AppEntry did update')
