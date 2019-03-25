@@ -18,9 +18,6 @@ export default class AppEntry extends React.Component {
   componentDidUpdate(){
     console.log('AppEntry did update')
   }
-  /*addLink(id){
-    this.props.addLink(id)
-  }*/
   render(){
     let style = {
       div: {
