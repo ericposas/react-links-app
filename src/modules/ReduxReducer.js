@@ -4,7 +4,7 @@ import React from 'react'
 export default function Reducer(state, action){
   if(state === undefined){
     return {
-      title: 'Links',
+      title: 'Add Links',
       links: [],
       ids: []
     }
