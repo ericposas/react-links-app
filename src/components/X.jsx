@@ -8,9 +8,10 @@ export default class X extends React.Component {
   }
 
   onClicker(){
-    this.props.deleteLink(this.props.id)
+    const {deleteLink} = this.props
+    deleteLink(this.props.id)
   }
-
+  
   render(){
     let style = {
       x:{

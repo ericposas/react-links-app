@@ -9,12 +9,13 @@ export default class Input extends React.Component {
 
   onSubmission(e){
     e.preventDefault()
+    const {addLink} = this.props
     if(this._input.value !== '' && this._input.value !== ' ')
-      this.props.addLink(this._input.value)
+      addLink(this._input.value)
     this._input.value = ''
     this._input.focus()
   }
-
+  
   render(){
     let style = {
       div: {
