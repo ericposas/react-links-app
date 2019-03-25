@@ -1,7 +1,8 @@
 import React from 'react'
-import Title from './Title.jsx'
-import Link from './Link.jsx'
-import Input from './Input.jsx'
+import Title from './Title'
+import Link from './Link'
+import Input from './Input'
+import GitHub from './GitHub'
 import uuid from 'uuid'
 
 // REMEMBER: React Component props can store/render React components, but
@@ -29,6 +30,7 @@ export default class AppEntry extends React.Component {
     let links = dummy.map((link,i)=><div key={uuid()}><Link id={ids[i]} deleteLink={this.props.deleteLink} link={link}/></div>)
     return(
       <div>
+        <GitHub url="https://github.com/ericposas/react-links-app"/>
         <Title title={this.props.title}/>
         <Input addLink={this.props.addLink}/>
         <div style={style.div}>{links}</div>

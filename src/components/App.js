@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import AppEntry from './AppEntry.jsx'
+import AppEntry from './AppEntry'
 import React from 'react'
 import {
   retrieveLinks,

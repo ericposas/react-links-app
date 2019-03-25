@@ -1,5 +1,5 @@
 import React from 'react'
-import X from './X.jsx'
+import X from './X'
 
 export default class Link extends React.Component {
 
