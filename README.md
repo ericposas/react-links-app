@@ -21,6 +21,8 @@
 ### Possible improvements to make
 - Reverse the order of links
   + where the last one added gets pushed to the top of the list
+- Add React-supported animations, possibly Popmotion
+  + https://popmotion.io/pose/ 
 - Improve UI look
 - Start a new project called "Pages"
   + will add support for groups of links, or 'pages'
