@@ -32,8 +32,8 @@ class App extends React.Component {
         margin:'none'
       }
     }
-    let ids = this.props.ids.slice(0)
-    let dummy = this.props.links.slice(0)
+    let ids = this.props.ids.slice(0).reverse()
+    let dummy = this.props.links.slice(0).reverse()
     let links = dummy.map((link,i)=><div key={uuid()}><Link id={ids[i]} link={link}/></div>)
     return(
       <div>
