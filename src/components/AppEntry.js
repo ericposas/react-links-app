@@ -1,4 +1,4 @@
-import React from 'react'
+/*import React from 'react'
 import Title from './Title'
 import Link from './Link'
 import Input from './Input'
@@ -39,3 +39,4 @@ export default class AppEntry extends React.Component {
   }
 
 }
+*/

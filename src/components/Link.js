@@ -23,7 +23,7 @@ export default class Link extends React.Component {
     }
     return(
       <div className="link" style={style.div}>
-        <X id={this.props.id} deleteLink={this.props.deleteLink}/>
+        <X id={this.props.id}/>
         <a style={style.a} href={this.props.link} target="_blank"><div>{this.props.link}</div></a>
       </div>
     )

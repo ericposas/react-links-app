@@ -1,7 +1,7 @@
 import request from 'superagent'
 
 export const retrieveLinks = ()=>{
-  return async dispatch=>{
+  return async (dispatch, getState)=>{
     dispatch({ type:'retrievelinks' })
     try{
       const result = await request.get('http://159.89.128.162/links')
@@ -9,6 +9,7 @@ export const retrieveLinks = ()=>{
       let db_ids = parsed.slice(0).map(obj=>obj._id)
       let retrieved = parsed.slice(0).map(obj=>obj.link)
       dispatch({ type:'linksretrieved', ids:db_ids, links:retrieved })
+      console.log(getState())
     }catch(err){
       console.log(err)
     }
@@ -16,7 +17,7 @@ export const retrieveLinks = ()=>{
 }
 
 export const addLink = link=>{
-  return async dispatch=>{
+  return async (dispatch, getState)=>{
     // addLink must also retrieve links once it successfully adds a new one
     dispatch({ type:'addinglink' })
     try{
@@ -33,7 +34,7 @@ export const addLink = link=>{
 }
 
 export const deleteLink = id=>{
-  return async dispatch=>{
+  return async (dispatch, getState)=>{
     // deleteLink must retrieve values from db after the deletion
     dispatch({ type:'deletinglink' })
     try{

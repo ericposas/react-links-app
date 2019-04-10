@@ -1,6 +1,11 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import {
+  mapStateToProps,
+  mapDispatchToProps
+} from '../modules/mSTP'
 
-export default class X extends React.Component {
+class X extends React.Component {
 
   constructor(props){
     super(props)
@@ -11,7 +16,7 @@ export default class X extends React.Component {
     const {deleteLink} = this.props
     deleteLink(this.props.id)
   }
-  
+
   render(){
     let style = {
       x:{
@@ -33,3 +38,5 @@ export default class X extends React.Component {
   }
 
 }
+
+export default connect(mapStateToProps,mapDispatchToProps)(X)

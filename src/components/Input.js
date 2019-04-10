@@ -1,6 +1,11 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import {
+  mapStateToProps,
+  mapDispatchToProps
+} from '../modules/mSTP'
 
-export default class Input extends React.Component {
+class Input extends React.Component {
 
   constructor(props){
     super(props)
@@ -15,7 +20,7 @@ export default class Input extends React.Component {
     this._input.value = ''
     this._input.focus()
   }
-  
+
   render(){
     let style = {
       div: {
@@ -55,3 +60,5 @@ export default class Input extends React.Component {
   }
 
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Input)
