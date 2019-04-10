@@ -22,15 +22,20 @@ export default class Link extends React.Component {
         border: '2px dotted orange'
       }
     }
-    const {latest} = this.props;
+    const {latest,link} = this.props;
+    let httpLink = /^((http|https|ftp):\/\/)/.test(link) ? link : `http://${link}`
     let _x = latest == true ? -10 : 0;
+    let _y = latest == true ? -5 : 0;
     let _alpha = latest == true ? 0 : 1;
-    let _duration = latest == true ? .5 : 0;
+    let _duration = latest == true ? 1 : 0;
+    let _scale = latest == true ? 1 : 1;
     return(
-      <Tween from={{alpha:_alpha, x:_x}} duration={_duration}>
+      <Tween from={{alpha:_alpha, x:_x, y:_y, scale:_scale}} duration={_duration}>
         <div className="link" style={style.div}>
           <X id={this.props.id}/>
-          <a style={style.a} href={this.props.link} target="_blank"><div>{this.props.link}</div></a>
+          <a style={style.a} href={httpLink} target="_blank">
+            <div>{httpLink}</div>
+          </a>
         </div>
       </Tween>
     )
