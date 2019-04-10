@@ -6,9 +6,10 @@ const ObjectId = require('mongodb').ObjectId;
 let db = null;
 let collection = null;
 const user = 'eric'
+const pwd = 'pass'
 const host = '159.89.128.162'
 const port = '27017'
-const dbname = 'test'
+const dbname = 'links'
 
 init()
 
@@ -45,7 +46,7 @@ function startExpressRoutes(){
 
 function connectToMongo(){
   return new Promise((resolve, reject)=>{
-    mongodb.connect(`mongodb://${user}:root@${host}:${port}/${dbname}`, {useNewUrlParser:true}, (err,client)=>{
+    mongodb.connect(`mongodb://${user}:${pwd}@${host}:${port}/${dbname}`, {useNewUrlParser:true}, (err,client)=>{
       if(!err){
         db = client
         console.log('successfully connected to mongo')

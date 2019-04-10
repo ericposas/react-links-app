@@ -1,3 +1,4 @@
 #!/bin/bash
 
 scp -r dist/ docean:/var/www/html/links-app/
+scp links-server.js docean:/var/www/html/links-app/
