@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-export const retrieveLinks = () => {
+export const retrieveLinks = ()=>{
   return async dispatch=>{
     dispatch({ type:'retrievelinks' })
     try{
