@@ -1,0 +1,3 @@
+#!/bin/bash
+
+scp -r dist/ docean:/var/www/html/links-app/
