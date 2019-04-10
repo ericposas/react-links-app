@@ -34,7 +34,7 @@ class App extends React.Component {
     }
     let ids = this.props.ids.slice(0).reverse()
     let dummy = this.props.links.slice(0).reverse()
-    let links = dummy.map((link,i)=><div key={uuid()}><Link id={ids[i]} link={link}/></div>)
+    let links = dummy.map((link,i)=><div key={uuid()}><Link latest={i === 0 ? true : false} id={ids[i]} link={link}/></div>)
     return(
       <div>
         <GitHub url="https://github.com/ericposas/react-links-app"/>
