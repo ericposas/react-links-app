@@ -2,3 +2,4 @@
 
 scp -r dist/ docean:/var/www/html/links-app/
 scp links-server.js docean:/var/www/html/links-app/
+scp config.js docean:/var/www/html/links-app/
