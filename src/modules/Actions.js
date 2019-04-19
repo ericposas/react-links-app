@@ -1,8 +1,6 @@
 import request from 'superagent'
-import {
-  host,
-  dbname
-} from '../../config'
+const host = '159.89.128.162'
+const dbname = 'links'
 
 export const retrieveLinks = ()=>{
   return async (dispatch, getState)=>{
