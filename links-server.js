@@ -5,11 +5,13 @@ const ObjectId = require('mongodb').ObjectId;
 // database credentials
 let db = null;
 let collection = null;
-const user = 'eric'
-const pwd = 'pass'
-const host = '159.89.128.162'
-const port = '27017'
-const dbname = 'links'
+const {
+  user,
+  pwd,
+  host,
+  port,
+  dbname
+} = require('./config')
 
 init()
 
